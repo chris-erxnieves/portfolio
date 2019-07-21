@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { useStaticQuery, graphql } from 'gatsby';
 import MediaQuery from 'react-responsive';
 import styled from 'styled-components';
+import Sidebar from './sidebar';
 
 const HeaderWrapper = styled.header`
   position: fixed;
@@ -66,7 +67,7 @@ const Header = ({ scrollFn, headerItems }) => {
     }
   `);
   return (
-    <HeaderWrapper>
+    <HeaderWrapper id="App">
       <SiteHeader onClick={() => scrollFn()}>{data.site.siteMetadata.title}</SiteHeader>
       <MediaQuery minWidth={750}>
         <NavigationList>
@@ -78,7 +79,7 @@ const Header = ({ scrollFn, headerItems }) => {
         </NavigationList>
       </MediaQuery>
       <MediaQuery maxWidth={749}>
-        <span>TODO</span>
+        <Sidebar headerItems={headerItems} scrollFn={scrollFn}></Sidebar>
       </MediaQuery>
     </HeaderWrapper>
   );
