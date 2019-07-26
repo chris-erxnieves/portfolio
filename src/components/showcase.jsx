@@ -15,7 +15,8 @@ const showcaseItems = [
 ];
 
 const OuterSectionWrapper = styled.section`
-  background-color: ${({ theme }) => theme.secondary};
+  background-color: ${({ theme }) => theme.light};
+  color: ${({ theme }) => theme.dark};
 `;
 
 const InnerSectionWrapper = styled.section`
@@ -26,7 +27,6 @@ const InnerSectionWrapper = styled.section`
 
 const SectionHeading = styled.h1`
   margin: 0;
-  border-bottom: 6px solid ${({ theme }) => theme.accent};
   display: inline-block;
 `;
 

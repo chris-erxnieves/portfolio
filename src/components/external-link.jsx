@@ -6,13 +6,13 @@ import { IconContext } from 'react-icons';
 const Link = styled.a`
   text-decoration: none;
   font-size: 1.1rem;
-  color: ${({ colored, theme }) => (colored ? theme.secondary : theme.dark)};
+  color: ${({ colored, theme }) => (colored ? theme.yellow : theme.dark)};
   transition: all 0.1s ease-in-out;
   display: inline-flex;
   align-items: center;
 
   &:hover {
-    color: ${({ colored, theme }) => (colored ? theme['secondary-darken-40'] : 'black')};
+    color: ${({ colored, theme }) => (colored ? theme.yellowDarken10 : 'black')};
   }
 `;
 
@@ -21,7 +21,7 @@ const Text = styled.span`
 `;
 
 const ExternalLink = ({ text, href, fontSize, iconSize, colored, children }) => (
-  <Link href={href} target="_blank" rel="noopener noreferrer" colored={colored}>
+  <Link href={href} target={href.startsWith('mailto') ? null : '_blank'} rel="noopener noreferrer" colored={colored}>
     <IconContext.Provider value={{ size: iconSize }}>{children}</IconContext.Provider>
     {text ? <Text style={{ fontSize }}>{text}</Text> : null}
   </Link>

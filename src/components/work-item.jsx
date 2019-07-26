@@ -14,7 +14,6 @@ const Section = styled.section`
 
 const Company = styled.h2`
   display: inline-block;
-  border-bottom: 6px solid ${({ theme }) => theme.secondary};
   margin-bottom: 0.5rem;
 `;
 

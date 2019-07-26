@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useStaticQuery, graphql } from 'gatsby';
 import MediaQuery from 'react-responsive';
 import styled from 'styled-components';
+import { FaPaperPlane } from 'react-icons/fa';
 import Sidebar from './sidebar';
+import ExternalLink from './external-link';
 
 const HeaderWrapper = styled.header`
   position: fixed;
@@ -14,7 +15,7 @@ const HeaderWrapper = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: ${({ theme }) => theme.accent};
+  background-color: ${({ theme }) => theme.dark};
   box-shadow: 0 2px 3px -2px rgba(0, 0, 0, 0.2);
   z-index: 1;
 `;
@@ -30,14 +31,11 @@ const NavigationListItem = styled.li`
   margin: 0;
   cursor: pointer;
   user-select: none;
-  margin-left: 1rem;
-  border-bottom: 6px solid ${({ theme }) => theme.accent};
-  transition: all 0.15s ease-in-out;
-  position: relative;
-  top: 6px;
+  margin-left: 4rem;
+  transition: 0.1s all ease-in-out;
 
   &:hover {
-    border-bottom-color: ${({ theme }) => theme.secondary};
+    color: ${({ theme }) => theme.yellow};
   }
 `;
 
@@ -45,45 +43,35 @@ const SiteHeader = styled.h1`
   cursor: pointer;
   user-select: none;
   position: relative;
-  border-bottom: 6px solid ${({ theme }) => theme.accent};
-  transition: all 0.15s ease-in-out;
-  position: relative;
-  top: 6px;
   margin: 0;
 
+  transition: 0.1s all ease-in-out;
+
   &:hover {
-    border-bottom-color: ${({ theme }) => theme.secondary};
+    color: ${({ theme }) => theme.yellow};
   }
 `;
 
-const Header = ({ scrollFn, headerItems }) => {
-  const data = useStaticQuery(graphql`
-    {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `);
-  return (
-    <HeaderWrapper id="App">
-      <SiteHeader onClick={() => scrollFn()}>{data.site.siteMetadata.title}</SiteHeader>
-      <MediaQuery minWidth={750}>
-        <NavigationList>
-          {headerItems.map(({ ref, label }, i) => (
-            <NavigationListItem onClick={() => scrollFn(ref)} key={i}>
-              {label}
-            </NavigationListItem>
-          ))}
-        </NavigationList>
-      </MediaQuery>
-      <MediaQuery maxWidth={749}>
-        <Sidebar headerItems={headerItems} scrollFn={scrollFn}></Sidebar>
-      </MediaQuery>
-    </HeaderWrapper>
-  );
-};
+const Header = ({ scrollFn, headerItems }) => (
+  <HeaderWrapper>
+    <SiteHeader onClick={() => scrollFn()}>CE</SiteHeader>
+    <MediaQuery minWidth={750}>
+      <NavigationList>
+        {headerItems.map(({ ref, label }, i) => (
+          <NavigationListItem onClick={() => scrollFn(ref)} key={i}>
+            {label}
+          </NavigationListItem>
+        ))}
+      </NavigationList>
+      <ExternalLink text="Email me" href="mailto:cerxleben.fhs@gmail.com" iconSize="1.2rem" colored>
+        <FaPaperPlane />
+      </ExternalLink>
+    </MediaQuery>
+    <MediaQuery maxWidth={749}>
+      <Sidebar headerItems={headerItems} scrollFn={scrollFn}></Sidebar>
+    </MediaQuery>
+  </HeaderWrapper>
+);
 
 Header.propTypes = {
   scrollFn: PropTypes.func.isRequired,

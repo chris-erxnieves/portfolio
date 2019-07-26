@@ -54,8 +54,8 @@ const MessageInput = styled.textarea`
 `;
 
 export default class ContactForm extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       name: '',
       email: '',

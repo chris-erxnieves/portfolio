@@ -39,7 +39,12 @@ const workHistory = [
   },
 ];
 
-const SectionWrapper = styled.section`
+const OuterSectionWrapper = styled.section`
+  background-color: white;
+  color: ${({ theme }) => theme.dark};
+`;
+
+const InnerSectionWrapper = styled.section`
   max-width: 1200px;
   margin: 0 auto;
   padding: 3rem 1rem;
@@ -47,17 +52,18 @@ const SectionWrapper = styled.section`
 
 const SectionHeading = styled.h1`
   margin: 0;
-  border-bottom: 6px solid ${({ theme }) => theme.secondary};
   display: inline-block;
 `;
 
 const Work = () => (
-  <SectionWrapper>
-    <SectionHeading>Work</SectionHeading>
-    {workHistory.map((w, i) => (
-      <WorkItem info={w} key={i} />
-    ))}
-  </SectionWrapper>
+  <OuterSectionWrapper>
+    <InnerSectionWrapper>
+      <SectionHeading>Work</SectionHeading>
+      {workHistory.map((w, i) => (
+        <WorkItem info={w} key={i} />
+      ))}
+    </InnerSectionWrapper>
+  </OuterSectionWrapper>
 );
 
 export default Work;

@@ -8,7 +8,7 @@ import ExternalLink from './external-link';
 const SectionWrapper = styled.section`
   padding: 1rem;
   margin-top: 1rem;
-  background-color: ${({ theme }) => theme.light};
+  background-color: white;
   box-shadow: 2px 3px 4px -2px rgba(0, 0, 0, 0.2);
 `;
 

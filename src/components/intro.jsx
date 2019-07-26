@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const IntroSection = styled.section`
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1rem 3rem 1rem;
+  padding: 5rem 1rem 6rem 1rem;
 `;
 
 const IntroMessage = styled.h1`
@@ -17,12 +17,9 @@ const IntroMessageRight = styled(IntroMessage)`
   margin: 0;
 `;
 
-const EmphasizedTextSecondary = styled.strong`
-  border-bottom: 6px solid ${({ theme }) => theme.secondary};
-`;
-
-const EmphasizedTextAccent = styled(EmphasizedTextSecondary)`
-  border-bottom-color: ${({ theme }) => theme.accent};
+const EmphasizedText = styled.strong`
+  color: ${({ theme }) => theme.yellow};
+  border-bottom: 2px solid ${({ theme }) => theme.yellow};
 `;
 
 const Intro = () => {
@@ -38,10 +35,10 @@ const Intro = () => {
   return (
     <IntroSection>
       <IntroMessage>
-        Hi, I'm <EmphasizedTextSecondary>{data.site.siteMetadata.author}</EmphasizedTextSecondary>
+        Hi, I'm <EmphasizedText>{data.site.siteMetadata.author}</EmphasizedText>
       </IntroMessage>
       <IntroMessageRight>
-        and I'm a <EmphasizedTextAccent>Software Engineer</EmphasizedTextAccent> located in St. Louis, MO.
+        and I'm a <EmphasizedText>Software Engineer</EmphasizedText> located in St. Louis, MO.
       </IntroMessageRight>
     </IntroSection>
   );
