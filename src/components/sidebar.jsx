@@ -5,10 +5,10 @@ import PropTypes from 'prop-types';
 import './sidebar.css';
 
 const MenuItem = styled.a`
-  color: ${({ theme }) => theme.light};
+  color: ${({ theme }) => theme.dark};
   transition: all 0.1s all;
   cursor: pointer;
-  margin-bottom: 1.8rem;
+  margin-bottom: 2rem;
   font-size: 1.8rem;
 
   &:hover {
@@ -36,7 +36,12 @@ class Sidebar extends Component {
   render() {
     const { menuOpen } = this.state;
     return (
-      <Menu right isOpen={menuOpen} onStateChange={state => this.handleStateChange(state)}>
+      <Menu
+        right
+        isOpen={menuOpen}
+        onStateChange={state => this.handleStateChange(state)}
+        burgerButtonClassName={this.props.atTopOfPage ? 'at-top-of-page' : null}
+        disableAutoFocus>
         {this.props.headerItems.map(({ ref, label }, i) => (
           <MenuItem onClick={() => this.closeMenu(ref)} key={i}>
             {label}
@@ -49,6 +54,7 @@ class Sidebar extends Component {
 
 Sidebar.propTypes = {
   scrollFn: PropTypes.func.isRequired,
+  atTopOfPage: PropTypes.bool.isRequired,
   headerItems: PropTypes.arrayOf(
     PropTypes.shape({
       ref: PropTypes.string.isRequired,

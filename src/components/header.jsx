@@ -87,7 +87,7 @@ class Header extends Component {
           </ExternalLink>
         </MediaQuery>
         <MediaQuery maxWidth={749}>
-          <Sidebar headerItems={this.props.headerItems} scrollFn={this.props.scrollFn}></Sidebar>
+          <Sidebar headerItems={this.props.headerItems} scrollFn={this.props.scrollFn} atTopOfPage={this.state.atTopOfPage}></Sidebar>
         </MediaQuery>
       </HeaderWrapper>
     );
