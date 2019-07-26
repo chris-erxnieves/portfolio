@@ -21,8 +21,8 @@ module.exports = {
         name: `portfolio`,
         short_name: `portfolio`,
         start_url: `/`,
-        background_color: `#EED3FB`,
-        theme_color: `#9AEFCF`,
+        background_color: `#2C2E31`,
+        theme_color: `#F3E367`,
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },

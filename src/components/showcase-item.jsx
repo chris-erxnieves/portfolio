@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { FaCode } from 'react-icons/fa';
+import MediaQuery from 'react-responsive';
 import TechItem from './tech-item';
 import ExternalLink from './external-link';
 
@@ -10,6 +11,14 @@ const SectionWrapper = styled.section`
   margin-top: 1rem;
   background-color: white;
   box-shadow: 2px 3px 4px -2px rgba(0, 0, 0, 0.2);
+  display: flex;
+`;
+
+const ImageWrapper = styled.div`
+  min-width: 450px;
+  margin-left: 1.5rem;
+  overflow: hidden;
+  border-radius: 3px;
 `;
 
 const Tech = styled.div`
@@ -41,26 +50,31 @@ const Summary = styled.p`
   margin-bottom: 1rem;
 `;
 
-const ShowcaseItem = ({ info }) => (
+const ShowcaseItem = ({ info, children }) => (
   <SectionWrapper>
-    <TitleYearWrapper>
-      <Title>{info.title}</Title>
-      <Year>- {info.year}</Year>
-    </TitleYearWrapper>
-    <Summary>{info.summary}</Summary>
-    <div style={{ marginBottom: info.sourceCodeUrl ? `.75rem` : `0` }}>
-      <TechUsedLabel>Tech used</TechUsedLabel>
-      {info.techUsed.map((t, i) => (
-        <Tech key={i}>
-          <TechItem tech={t} />
-        </Tech>
-      ))}
+    <div>
+      <TitleYearWrapper>
+        <Title>{info.title}</Title>
+        <Year>- {info.year}</Year>
+      </TitleYearWrapper>
+      <Summary>{info.summary}</Summary>
+      <div style={{ marginBottom: info.sourceCodeUrl ? `.75rem` : `0` }}>
+        <TechUsedLabel>Tech used</TechUsedLabel>
+        {info.techUsed.map((t, i) => (
+          <Tech key={i}>
+            <TechItem tech={t} />
+          </Tech>
+        ))}
+      </div>
+      {info.sourceCodeUrl ? (
+        <ExternalLink text="View code" href={info.sourceCodeUrl} colored>
+          <FaCode />
+        </ExternalLink>
+      ) : null}
     </div>
-    {info.sourceCodeUrl ? (
-      <ExternalLink text="View code" href={info.sourceCodeUrl} colored>
-        <FaCode />
-      </ExternalLink>
-    ) : null}
+    <MediaQuery minWidth={900}>
+      <ImageWrapper>{children}</ImageWrapper>
+    </MediaQuery>
   </SectionWrapper>
 );
 
@@ -71,7 +85,6 @@ ShowcaseItem.propTypes = {
     summary: PropTypes.string.isRequired,
     techUsed: PropTypes.arrayOf(PropTypes.string).isRequired,
     sourceLink: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
   }).isRequired,
 };
 

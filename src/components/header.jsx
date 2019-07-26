@@ -36,7 +36,7 @@ const NavigationListItem = styled.li`
   margin: 0;
   cursor: pointer;
   user-select: none;
-  margin-left: 4rem;
+  margin-left: ${({ first }) => (first ? 0 : '4rem')};
   transition: 0.1s all ease-in-out;
 
   &:hover {
@@ -76,7 +76,7 @@ class Header extends Component {
         <MediaQuery minWidth={750}>
           <NavigationList>
             {this.props.headerItems.map(({ ref, label }, i) => (
-              <NavigationListItem onClick={() => this.props.scrollFn(ref)} key={i}>
+              <NavigationListItem first={i === 0} onClick={() => this.props.scrollFn(ref)} key={i}>
                 {label}
               </NavigationListItem>
             ))}

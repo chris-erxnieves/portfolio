@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import ShowcaseItem from './showcase-item';
+import PortfolioImage from './portfolio-image';
 
 const showcaseItems = [
   {
@@ -10,7 +11,6 @@ const showcaseItems = [
     techUsed: ['React.js', 'Gatsby', 'GraphQL', 'styled-components', 'AWS Amplify'],
     sourceLink: 'https://github.com/chris-erxleben/portfolio',
     sourceCodeUrl: 'https://github.com/chris-erxleben/portfolio/',
-    image: 'portfolio-screenshot.png',
   },
 ];
 
@@ -35,7 +35,16 @@ const Showcase = () => (
     <InnerSectionWrapper>
       <SectionHeading>Showcase</SectionHeading>
       {showcaseItems.map((item, i) => (
-        <ShowcaseItem info={item} key={i} />
+        <ShowcaseItem info={item} key={i}>
+          {(function() {
+            switch (item.title) {
+              case 'My Portfolio':
+                return <PortfolioImage />;
+              default:
+                return null;
+            }
+          })()}
+        </ShowcaseItem>
       ))}
     </InnerSectionWrapper>
   </OuterSectionWrapper>
