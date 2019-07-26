@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-const encode = data =>
-  Object.keys(data)
-    .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
-    .join('&');
-
 const Form = styled.form`
   display: flex;
   flex-flow: column;
@@ -15,8 +10,8 @@ const Form = styled.form`
 const SubmitButton = styled.button`
   max-width: 5rem;
   border-radius: 3px;
-  color: ${({ theme }) => theme.dark};
-  background-color: ${({ theme }) => theme.secondary};
+  color: white;
+  background-color: ${({ theme }) => theme.yellow};
   text-transform: uppercase;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
@@ -25,16 +20,16 @@ const SubmitButton = styled.button`
   margin-top: 0.5rem;
 
   &:disabled {
-    background-color: ${({ theme }) => theme.disabled};
+    background-color: ${({ theme }) => theme.darkGray};
     cursor: not-allowed;
   }
 
   &:hover:not([disabled]) {
-    background-color: ${({ theme }) => theme.accent};
+    background-color: ${({ theme }) => theme.yellowDarken10};
   }
 
   &:focus:not([disabled]) {
-    background-color: ${({ theme }) => theme.accent};
+    background-color: ${({ theme }) => theme.yellowDarken10};
   }
 `;
 
@@ -60,57 +55,22 @@ export default class ContactForm extends Component {
       name: '',
       email: '',
       message: '',
-      bot: '',
-      submissionInProgress: false,
+      _gotcha: '',
     };
   }
 
-  handleSubmit = e => {
-    if (this.state.bot === '') {
-      this.setState({ submissionInProgress: true });
-      const body = encode({
-        'form-name': 'content',
-        name: this.state.name,
-        email: this.state.email,
-        message: this.state.message,
-      });
-      fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body,
-      })
-        .then(this.onSubmitSuccess)
-        .catch(this.onSubmitFail);
-      e.preventDefault();
-    }
-  };
-
   handleChange = e => this.setState({ [e.target.name]: e.target.value });
 
-  onSubmitSuccess = () => {
-    this.setState({
-      name: '',
-      email: '',
-      message: '',
-      bot: '',
-      submissionInProgress: false,
-    });
-  };
-
-  onSubmitFail = () => {
-    this.setState({ submissionInProgress: false });
-  };
-
-  shouldDisable = () => this.state.submissionInProgress || this.state.name === '' || this.state.email === '' || this.state.message === '';
+  shouldDisable = () => this.state.name === '' || this.state.email === '' || this.state.message === '' || this.state._gotcha !== '';
 
   render() {
-    const { name, email, message, bot } = this.state;
+    const { name, email, message, _gotcha } = this.state;
     return (
-      <Form onSubmit={this.handleSubmit}>
-        <input type="hidden" name="bot" value={bot} onChange={this.handleChange} />
-        <NameInput type="text" name="name" placeholder="Name" value={name} onChange={this.handleChange} />
-        <EmailInput type="email" name="email" placeholder="Email" value={email} onChange={this.handleChange} />
-        <MessageInput name="message" placeholder="Message" rows="5" value={message} onChange={this.handleChange} />
+      <Form action="https://formspree.io/cerxleben.fhs@gmail.com" method="POST">
+        <input type="text" name="_gotcha" style={{ display: `none` }} onChange={this.handleChange} value={_gotcha} />
+        <NameInput type="text" name="name" placeholder="Name" onChange={this.handleChange} value={name} />
+        <EmailInput type="email" name="email" placeholder="Email" onChange={this.handleChange} value={email} />
+        <MessageInput name="message" placeholder="Message" rows="5" onChange={this.handleChange} value={message} />
         <SubmitButton type="submit" disabled={this.shouldDisable()}>
           Send
         </SubmitButton>
