@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import MediaQuery from 'react-responsive';
 import styled from 'styled-components';
 import { FaPaperPlane } from 'react-icons/fa';
+import { throttle } from 'lodash';
 import Sidebar from './sidebar';
 import ExternalLink from './external-link';
 
@@ -11,13 +12,17 @@ const HeaderWrapper = styled.header`
   top: 0;
   right: 0;
   left: 0;
-  padding: 1.45rem 1.0875rem;
+  padding-left: 1.0875rem;
+  padding-right: 1.0875rem;
+  padding-top: ${({ atTopOfPage }) => (atTopOfPage ? '2rem' : '1.45rem')};
+  padding-bottom: ${({ atTopOfPage }) => (atTopOfPage ? '2rem' : '1.45rem')};
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: ${({ theme }) => theme.dark};
-  box-shadow: 0 2px 3px -2px rgba(0, 0, 0, 0.2);
+  background-color: ${({ atTopOfPage, theme }) => (atTopOfPage ? theme.lightGray : theme.dark)};
+  box-shadow: ${({ atTopOfPage }) => (atTopOfPage ? null : '0 2px 3px -2px rgba(0, 0, 0, 0.2)')};
   z-index: 1;
+  transition: all 0.2s ease-in-out;
 `;
 
 const NavigationList = styled.ul`
@@ -52,26 +57,41 @@ const SiteHeader = styled.h1`
   }
 `;
 
-const Header = ({ scrollFn, headerItems }) => (
-  <HeaderWrapper>
-    <SiteHeader onClick={() => scrollFn()}>CE</SiteHeader>
-    <MediaQuery minWidth={750}>
-      <NavigationList>
-        {headerItems.map(({ ref, label }, i) => (
-          <NavigationListItem onClick={() => scrollFn(ref)} key={i}>
-            {label}
-          </NavigationListItem>
-        ))}
-      </NavigationList>
-      <ExternalLink text="Email me" href="mailto:cerxleben.fhs@gmail.com" iconSize="1.2rem" colored>
-        <FaPaperPlane />
-      </ExternalLink>
-    </MediaQuery>
-    <MediaQuery maxWidth={749}>
-      <Sidebar headerItems={headerItems} scrollFn={scrollFn}></Sidebar>
-    </MediaQuery>
-  </HeaderWrapper>
-);
+class Header extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      atTopOfPage: window.scrollY === 0,
+    };
+  }
+
+  componentDidMount = () => {
+    window.addEventListener('scroll', throttle(() => this.setState({ atTopOfPage: window.scrollY === 0 }), 150));
+  };
+
+  render() {
+    return (
+      <HeaderWrapper atTopOfPage={this.state.atTopOfPage}>
+        <SiteHeader onClick={() => this.props.scrollFn()}>CE</SiteHeader>
+        <MediaQuery minWidth={750}>
+          <NavigationList>
+            {this.props.headerItems.map(({ ref, label }, i) => (
+              <NavigationListItem onClick={() => this.props.scrollFn(ref)} key={i}>
+                {label}
+              </NavigationListItem>
+            ))}
+          </NavigationList>
+          <ExternalLink text="Email me" href="mailto:cerxleben.fhs@gmail.com" iconSize="1.2rem" colored>
+            <FaPaperPlane />
+          </ExternalLink>
+        </MediaQuery>
+        <MediaQuery maxWidth={749}>
+          <Sidebar headerItems={this.props.headerItems} scrollFn={this.props.scrollFn}></Sidebar>
+        </MediaQuery>
+      </HeaderWrapper>
+    );
+  }
+}
 
 Header.propTypes = {
   scrollFn: PropTypes.func.isRequired,
