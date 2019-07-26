@@ -27,10 +27,10 @@ const Layout = ({ children, scrollFn, headerItems }) => (
   <ThemeProvider theme={theme}>
     <>
       <Header scrollFn={scrollFn} headerItems={headerItems} />
-      <div style={{ margin: `5.35rem auto 0 auto` }}>
+      <div style={{ marginTop: `5.35rem` }}>
         <main>{children}</main>
       </div>
-      <Footer />
+      <Footer scrollFn={scrollFn} />
     </>
   </ThemeProvider>
 );
