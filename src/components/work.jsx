@@ -14,16 +14,16 @@ const workHistory = [
   {
     company: 'Bullhorn',
     title: 'Mid-level Software Engineer',
-    summary: `TODO`,
+    summary: `My role while at Bullhorn was to help maintain and create new functionality for the company's premiere ATS/CRM offering which allows users to streamline all aspects of their hiring process. I also contributed to the company's open-source components library, novo-elements.`,
     from: 'Nov 2017',
     to: 'Mar 2019',
     techUsed: ['Angular', 'Typescript', 'RxJS', 'Jasmine', 'Karma', 'Protractor', 'Nest.js', 'Node.js', 'Sass', 'CSS3', 'HTML5', 'Git'],
     url: 'https://www.bullhorn.com/crm/',
   },
   {
-    company: 'Centene',
+    company: 'Centene Corporation',
     title: 'Software Engineer',
-    summary: `TODO`,
+    summary: `While at Centene, I was responsible for maintenance and feature-work for one of the company's internal applications, TruCare Anywhere; An offline-first application that ran as an Android app where case workers were able to access and modify a members healthcare information and history.`,
     from: 'Sept 2017',
     to: 'Nov 2017',
     techUsed: ['AngularJS', 'Ionic', 'Jasmine', 'Karma', 'Sass', 'CSS3', 'HTML5', 'Git'],
@@ -31,7 +31,7 @@ const workHistory = [
   {
     company: 'Maritz Motivation Solutions',
     title: 'Entry-level Software Engineer',
-    summary: `TODO`,
+    summary: `Right after finishing college I landed my first job in the field at Maritz, where I was tasked to flush out the functionality of the company's employee engagement solution, CultureNext.`,
     from: 'May 2016',
     to: 'Sept 2017',
     techUsed: ['AngularJS', 'Less', 'CSS3', 'Pug.js', 'HTML5', 'Jasmine', 'Karma'],
