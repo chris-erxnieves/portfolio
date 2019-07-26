@@ -61,11 +61,12 @@ class Header extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      atTopOfPage: window.scrollY === 0,
+      atTopOfPage: true,
     };
   }
 
   componentDidMount = () => {
+    this.setState({ atTopOfPage: window.scrollY === 0 });
     window.addEventListener('scroll', throttle(() => this.setState({ atTopOfPage: window.scrollY === 0 }), 150));
   };
 
