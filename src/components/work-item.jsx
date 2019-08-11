@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { FaGlobeAmericas } from 'react-icons/fa';
+import Fade from 'react-reveal/Fade';
 import TechItem from './tech-item';
 import ExternalLink from './external-link';
 
@@ -43,28 +44,30 @@ const Tech = styled.div`
   margin-bottom: 0.5rem;
 `;
 
-const WorkItem = ({ info }) => (
-  <Section>
-    <Company>{info.company}</Company>
-    <Title>{info.title}</Title>
-    <Dates>
-      {info.from} - {info.to}
-    </Dates>
-    <Summary>{info.summary}</Summary>
-    <div style={{ marginBottom: info.url ? `.75rem` : `0` }}>
-      <TechUsedLabel>Tech used</TechUsedLabel>
-      {info.techUsed.map((t, i) => (
-        <Tech key={i}>
-          <TechItem tech={t} />
-        </Tech>
-      ))}
-    </div>
-    {info.url ? (
-      <ExternalLink text="View site" href={info.url} colored>
-        <FaGlobeAmericas />
-      </ExternalLink>
-    ) : null}
-  </Section>
+const WorkItem = ({ info, shouldFadeInLeft }) => (
+  <Fade bottom>
+    <Section>
+      <Company>{info.company}</Company>
+      <Title>{info.title}</Title>
+      <Dates>
+        {info.from} - {info.to}
+      </Dates>
+      <Summary>{info.summary}</Summary>
+      <div style={{ marginBottom: info.url ? `.75rem` : `0` }}>
+        <TechUsedLabel>Tech used</TechUsedLabel>
+        {info.techUsed.map((t, i) => (
+          <Tech key={i}>
+            <TechItem tech={t} />
+          </Tech>
+        ))}
+      </div>
+      {info.url ? (
+        <ExternalLink text="View site" href={info.url} colored>
+          <FaGlobeAmericas />
+        </ExternalLink>
+      ) : null}
+    </Section>
+  </Fade>
 );
 
 WorkItem.propTypes = {

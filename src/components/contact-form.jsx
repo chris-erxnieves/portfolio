@@ -20,7 +20,7 @@ const SubmitButton = styled.button`
   margin-top: 0.5rem;
 
   &:disabled {
-    background-color: ${({ theme }) => theme.darkGray};
+    background-color: ${({ theme }) => theme.lightGray};
     cursor: not-allowed;
   }
 

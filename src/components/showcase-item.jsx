@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { FaCode } from 'react-icons/fa';
 import MediaQuery from 'react-responsive';
+import Fade from 'react-reveal/Fade';
 import TechItem from './tech-item';
 import ExternalLink from './external-link';
 
@@ -51,31 +52,33 @@ const Summary = styled.p`
 `;
 
 const ShowcaseItem = ({ info, children }) => (
-  <SectionWrapper>
-    <div>
-      <TitleYearWrapper>
-        <Title>{info.title}</Title>
-        <Year>- {info.year}</Year>
-      </TitleYearWrapper>
-      <Summary>{info.summary}</Summary>
-      <div style={{ marginBottom: info.sourceCodeUrl ? `.75rem` : `0` }}>
-        <TechUsedLabel>Tech used</TechUsedLabel>
-        {info.techUsed.map((t, i) => (
-          <Tech key={i}>
-            <TechItem tech={t} />
-          </Tech>
-        ))}
+  <Fade bottom>
+    <SectionWrapper>
+      <div>
+        <TitleYearWrapper>
+          <Title>{info.title}</Title>
+          <Year>- {info.year}</Year>
+        </TitleYearWrapper>
+        <Summary>{info.summary}</Summary>
+        <div style={{ marginBottom: info.sourceCodeUrl ? `.75rem` : `0` }}>
+          <TechUsedLabel>Tech used</TechUsedLabel>
+          {info.techUsed.map((t, i) => (
+            <Tech key={i}>
+              <TechItem tech={t} />
+            </Tech>
+          ))}
+        </div>
+        {info.sourceCodeUrl ? (
+          <ExternalLink text="View code" href={info.sourceCodeUrl} colored>
+            <FaCode />
+          </ExternalLink>
+        ) : null}
       </div>
-      {info.sourceCodeUrl ? (
-        <ExternalLink text="View code" href={info.sourceCodeUrl} colored>
-          <FaCode />
-        </ExternalLink>
-      ) : null}
-    </div>
-    <MediaQuery minWidth={900}>
-      <ImageWrapper>{children}</ImageWrapper>
-    </MediaQuery>
-  </SectionWrapper>
+      <MediaQuery minWidth={900}>
+        <ImageWrapper>{children}</ImageWrapper>
+      </MediaQuery>
+    </SectionWrapper>
+  </Fade>
 );
 
 ShowcaseItem.propTypes = {

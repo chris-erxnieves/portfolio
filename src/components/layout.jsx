@@ -7,18 +7,10 @@ import './layout.css';
 
 const theme = {
   lightGray: '#929D9E',
-  darkGray: '#7F8688',
   yellowLighten50: '#FFFFE6',
   yellowLighten40: '#FFFFCD',
-  yellowLighten30: '#FFFFB4',
-  yellowLighten20: '#FFFF9A',
-  yellowLighten10: '#FFFD81',
   yellow: '#F3E367',
   yellowDarken10: '#DACA4E',
-  yellowDarken20: '#C0B034',
-  yellowDarken30: '#A7971B',
-  yellowDarken40: '#8D7D01',
-  yellowDarken50: '#746400',
   dark: '#2C2E31',
   light: '#f6f7f8',
 };

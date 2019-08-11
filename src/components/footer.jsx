@@ -39,7 +39,7 @@ const Footer = ({ scrollFn }) => (
       <IconContext.Provider value={{ style }}>
         <FaHeart />
       </IconContext.Provider>
-      by yours truly.
+      by Chris Erxleben.
     </span>
   </FooterWrapper>
 );

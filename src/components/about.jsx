@@ -26,7 +26,7 @@ const About = () => (
   <OuterSectionWrapper>
     <InnerSectionWrapper>
       <SectionHeading>About me</SectionHeading>
-      <AboutParagraph>Hey there-my name is Chris.</AboutParagraph>
+      <AboutParagraph>Hey there—my name is Chris.</AboutParagraph>
       <AboutParagraph>I'm a passionate full-stack developer with an emphasis currently on front-end development.</AboutParagraph>
       <AboutParagraph>
         I'm always on the lookout to collaborate with others that get as fired up as I do about great software; So if that's what you're looking for, continue
