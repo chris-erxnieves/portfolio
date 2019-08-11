@@ -34,15 +34,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: 'UA-145082508-1',
-        head: false,
-        anonymize: true,
-        respectDNT: true,
-        exclude: [],
-        pageTransitionDelay: 0,
-        sampleRate: 5,
-        siteSpeedSampleRate: 10,
-        cookieDomain: 'chriserxleben.com',
+        trackingId: 'UA-145381843-1',
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
