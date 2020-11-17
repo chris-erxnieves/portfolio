@@ -44,7 +44,7 @@ const Tech = styled.div`
   margin-bottom: 0.5rem;
 `;
 
-const WorkItem = ({ info, shouldFadeInLeft }) => (
+const WorkItem = ({ info }) => (
   <Fade bottom>
     <Section>
       <Company>{info.company}</Company>

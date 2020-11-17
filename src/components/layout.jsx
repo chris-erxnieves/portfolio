@@ -12,7 +12,7 @@ const theme = {
   yellow: '#F3E367',
   yellowDarken10: '#DACA4E',
   dark: '#2C2E31',
-  light: '#f6f7f8',
+  light: '#EAEAEA',
 };
 
 const Layout = ({ children, scrollFn, headerItems }) => (

@@ -67,7 +67,10 @@ class Header extends Component {
 
   componentDidMount = () => {
     this.setState({ atTopOfPage: window.scrollY === 0 });
-    window.addEventListener('scroll', throttle(() => this.setState({ atTopOfPage: window.scrollY === 0 }), 150));
+    window.addEventListener(
+      'scroll',
+      throttle(() => this.setState({ atTopOfPage: window.scrollY === 0 }), 150)
+    );
   };
 
   render() {

@@ -4,11 +4,19 @@ import WorkItem from './work-item';
 
 const workHistory = [
   {
+    company: 'Bayer',
+    title: 'Senior Software Engineer',
+    summary: `I'm currently working on a project at bayer that pilots various business models that have potential for disrupting the agriculture and climate business. Most of our systems here leverage AWS Lambda for back-end and React for front-end.`,
+    from: 'October 2019',
+    to: 'Present',
+    techUsed: ['AWS', 'React', 'Typescript', 'Redux', 'Material UI', 'Jest', 'Postgres', 'Git'],
+  },
+  {
     company: 'Wells Fargo Advisors',
     title: 'Senior Software Engineer',
-    summary: `I'm currently working on a team that's tasked with taking all of the company's internal legacy apps and porting over their capabilities to a new app that's built for the modern web.`,
+    summary: `Through my tenure at WFA, I worked on a team that was tasked with taking all of the company's internal legacy apps and porting over their capabilities to a new app that's built for the modern web.`,
     from: 'March 2019',
-    to: 'Present',
+    to: 'October 2019',
     techUsed: ['Angular', 'Typescript', 'NgRx', 'RxJS', 'Less.js', 'CSS3', 'Bootstrap', 'Express', 'Node.js', 'D3.js', 'HTML5', 'Git'],
   },
   {
@@ -23,7 +31,7 @@ const workHistory = [
   {
     company: 'Centene Corporation',
     title: 'Software Engineer',
-    summary: `While at Centene, I was responsible for maintenance and feature-work for one of the company's internal applications, TruCare Anywhere; An offline-first application that ran as an Android app where case workers were able to access and modify a members healthcare information and history.`,
+    summary: `While at Centene, I was responsible for maintenance and feature-work for one of the company's internal applications-- TruCare Anywhere. It's an offline-first application that ran as an Android app where case workers were able to access and modify a members healthcare information and history.`,
     from: 'Sept 2017',
     to: 'Nov 2017',
     techUsed: ['AngularJS', 'Ionic', 'Jasmine', 'Karma', 'Sass', 'CSS3', 'HTML5', 'Git'],
@@ -31,7 +39,7 @@ const workHistory = [
   {
     company: 'Maritz Motivation Solutions',
     title: 'Entry-level Software Engineer',
-    summary: `Right after finishing college I landed my first job in the field at Maritz, where I was tasked to flush out the functionality of the company's employee engagement solution, CultureNext.`,
+    summary: `Right after finishing college, I landed my first job in the field at Maritz, where I was tasked to flush out the functionality of the company's employee engagement solution, CultureNext.`,
     from: 'May 2016',
     to: 'Sept 2017',
     techUsed: ['AngularJS', 'Less', 'CSS3', 'Pug.js', 'HTML5', 'Jasmine', 'Karma'],
