@@ -11,9 +11,8 @@ import {
   Flex,
   Link,
   Tag,
-  Center,
-} from '@chakra-ui/react'
-import { StaticImage } from 'gatsby-plugin-image'
+  Center, Image,
+} from '@chakra-ui/react';
 import {
   DownloadIcon,
   GithubIcon,
@@ -33,14 +32,12 @@ export const Side: FunctionComponent = () => {
   return (
     <VStack mt="110px" mx="20px" spacing="0">
       <Center zIndex={3} height="0">
-        <StaticImage
-          src="../../images/profile.jpg"
+        <Image
+          src={`/profile.jpg`}
           alt="Profile picture"
-          placeholder="blurred"
-          layout="fixed"
-          width={150}
-          height={150}
-          imgStyle={{ borderRadius: '20px' }}
+          boxSize="150px"
+          objectFit="cover"
+          borderRadius="20px"
         />
       </Center>
       <Box

@@ -6,24 +6,29 @@ import {
   HStack,
   Flex,
   useBreakpointValue,
-  Center,
-} from '@chakra-ui/react'
+  Center, Image, SystemProps,
+} from '@chakra-ui/react';
 import { FunctionComponent } from 'react'
-import { StaticImage } from 'gatsby-plugin-image'
 
 interface AboutProps {
   darkBackground?: boolean
 }
 
-const AboutImage: FunctionComponent = () => (
-  <StaticImage
-    src="../../images/ukelele.jpg"
-    alt="Playing the ukelele"
-    placeholder="blurred"
-    height={500}
-    imgStyle={{ borderRadius: '5px' }}
-  />
-)
+const AboutImage: FunctionComponent = () => {
+  const maxHeight: SystemProps['height'] = useBreakpointValue({
+    base: 450,
+    xl: 350,
+  })
+
+  return (
+    <Image
+      src={`/ukelele.jpg`}
+      alt="Playing the ukelele"
+      maxHeight={maxHeight}
+      borderRadius="5px"
+    />
+  )
+}
 
 export const About: FunctionComponent<AboutProps> = ({ darkBackground }) => {
   const variant: 'within' | 'side' = useBreakpointValue({
