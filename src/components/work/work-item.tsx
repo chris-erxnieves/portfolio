@@ -1,0 +1,57 @@
+import * as React from 'react'
+import { FunctionComponent } from 'react'
+import { Box, Button, Heading, Link, Tag, Text, Wrap } from '@chakra-ui/react'
+import { BriefcaseIcon, CalendarIcon, CodeIcon } from '../shared'
+
+interface WorkItemProps {
+  company: string
+  title: string
+  summary: string
+  from: string
+  to: string
+  url?: string
+  techUsed: Array<string>
+}
+
+export const WorkItem: FunctionComponent<WorkItemProps> = ({
+  company,
+  title,
+  from,
+  to,
+  summary,
+  techUsed,
+  url,
+}) => (
+  <Box bg="white" borderRadius="10px" p="20px">
+    <Heading fontSize="23px">{company}</Heading>
+    <Text mt="10px">
+      <BriefcaseIcon mr="7px" mb="3px" />
+      {title}
+    </Text>
+    <Text mt="5px">
+      <CalendarIcon mr="7px" mb="3px" />
+      {from} - {to}
+    </Text>
+    <Text mt="10px">{summary}</Text>
+    <Wrap mt="15px">
+      {techUsed.map((techUsedItem, index) => (
+        <Tag key={index} colorScheme="orange">
+          {techUsedItem}
+        </Tag>
+      ))}
+    </Wrap>
+    {url && (
+      <Button
+        as={Link}
+        isExternal
+        href={url}
+        leftIcon={<CodeIcon />}
+        colorScheme="lightPink"
+        mt="15px"
+        size="sm"
+      >
+        View site
+      </Button>
+    )}
+  </Box>
+)
