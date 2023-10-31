@@ -1,10 +1,9 @@
-import * as React from 'react'
+import React, { FC } from 'react'
 import { Helmet } from 'react-helmet'
 import { useLocation } from '@reach/router'
 import { useStaticQuery, graphql } from 'gatsby'
-import { FunctionComponent } from 'react'
 
-export const SEO: FunctionComponent = () => {
+export const SEO: FC = () => {
   const { pathname } = useLocation()
   let {
     site: {
@@ -35,20 +34,55 @@ export const SEO: FunctionComponent = () => {
         sizes="16x16"
         href="/favicon-16x16.png"
       />
-      <link rel="manifest" href="/site.webmanifest" />
-      <meta name="msapplication-TileColor" content="#C38D9E" />
-      <meta name="theme-color" content="#C38D9E"></meta>
+      <link
+        rel="manifest"
+        href="/site.webmanifest"
+      />
+      <meta
+        name="msapplication-TileColor"
+        content="#C38D9E"
+      />
+      <meta
+        name="theme-color"
+        content="#C38D9E"
+      ></meta>
 
-      <meta name="description" content={description} />
-      <meta name="image" content={image} />
+      <meta
+        name="description"
+        content={description}
+      />
+      <meta
+        name="image"
+        content={image}
+      />
 
-      {url && <meta property="og:url" content={url} />}
+      {url && (
+        <meta
+          property="og:url"
+          content={url}
+        />
+      )}
 
-      {title && <meta property="og:title" content={title} />}
+      {title && (
+        <meta
+          property="og:title"
+          content={title}
+        />
+      )}
 
-      {description && <meta property="og:description" content={description} />}
+      {description && (
+        <meta
+          property="og:description"
+          content={description}
+        />
+      )}
 
-      {image && <meta property="og:image" content={image} />}
+      {image && (
+        <meta
+          property="og:image"
+          content={image}
+        />
+      )}
     </Helmet>
   )
 }

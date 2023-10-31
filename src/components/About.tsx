@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React, { FC } from 'react'
 import {
   Box,
   Text,
@@ -6,15 +6,16 @@ import {
   HStack,
   Flex,
   useBreakpointValue,
-  Center, Image, SystemProps,
-} from '@chakra-ui/react';
-import { FunctionComponent } from 'react'
+  Center,
+  Image,
+  SystemProps,
+} from '@chakra-ui/react'
 
 interface AboutProps {
   darkBackground?: boolean
 }
 
-const AboutImage: FunctionComponent = () => {
+const AboutImage: FC = () => {
   const maxHeight: SystemProps['height'] = useBreakpointValue({
     base: 450,
     xl: 350,
@@ -22,25 +23,35 @@ const AboutImage: FunctionComponent = () => {
 
   return (
     <Image
-      src={`/ukelele.jpg`}
-      alt="Playing the ukelele"
+      src={`/running.webp`}
+      alt="Running at Great Sand Dunes National Park"
       maxHeight={maxHeight}
       borderRadius="5px"
     />
   )
 }
 
-export const About: FunctionComponent<AboutProps> = ({ darkBackground }) => {
-  const variant: 'within' | 'side' = useBreakpointValue({
+export const About: FC<AboutProps> = ({ darkBackground }) => {
+  const variant = useBreakpointValue({
     base: 'within',
     lg: 'side',
   })
 
   return (
-    <Box bg={darkBackground && 'gray.100'} p="30px" borderTopRadius="10px">
+    <Box
+      bg={darkBackground ? 'gray.100' : undefined}
+      p="30px"
+      borderTopRadius="10px"
+    >
       <HStack>
-        <Flex flexFlow="column" alignItems="flex-start">
-          <Heading size="lg" mb="12px">
+        <Flex
+          flexFlow="column"
+          alignItems="flex-start"
+        >
+          <Heading
+            size="lg"
+            mb="12px"
+          >
             About me
           </Heading>
           <Text mt="8px">Hey there—my name is Chris.</Text>
@@ -50,10 +61,10 @@ export const About: FunctionComponent<AboutProps> = ({ darkBackground }) => {
           </Text>
           <Text mt="20px">
             I'm originally from Missouri, but decided to come out to Colorado to
-            be closer to nature. In my free-time, I enjoy going on hikes,
-            biking, drinking coffee, playing my uke, video gaming, and spending
-            time with my love, Karla, our cat (Zora), and dog (Dora). Here's a
-            picture of me with my baby (uke)!
+            be closer to nature. In my free-time, I enjoy going on hikes and
+            runs, biking, drinking coffee, video gaming, and spending time with
+            my wife, Karla, our cat (Zora), and dog (Dora). We went to the sand
+            dunes this past fall, so I tried to run it (extremely difficult)!
           </Text>
           <Text mt="20px">
             I'm always on the lookout to collaborate with others that get as
@@ -62,12 +73,22 @@ export const About: FunctionComponent<AboutProps> = ({ darkBackground }) => {
             we're a match!
           </Text>
           {variant === 'within' && (
-            <Center mt="15px" w="100%">
+            <Center
+              mt="15px"
+              w="100%"
+            >
               <AboutImage />
             </Center>
           )}
         </Flex>
-        {variant === 'side' && <AboutImage />}
+        {variant === 'side' && (
+          <Flex
+            w="100%"
+            ml="30px"
+          >
+            <AboutImage />
+          </Flex>
+        )}
       </HStack>
     </Box>
   )

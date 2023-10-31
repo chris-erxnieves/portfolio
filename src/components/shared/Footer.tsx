@@ -1,9 +1,8 @@
 import { Flex, SystemProps, Text, useBreakpointValue } from '@chakra-ui/react'
-import { HeartIcon } from './icons'
-import * as React from 'react'
-import { FunctionComponent } from 'react'
+import { HeartIcon } from './Icons'
+import React, { FC } from 'react'
 
-export const Footer: FunctionComponent = () => {
+export const Footer: FC = () => {
   const justifyContent: SystemProps['justifyContent'] = useBreakpointValue({
     base: 'center',
     xl: 'flex-start',
@@ -28,9 +27,19 @@ export const Footer: FunctionComponent = () => {
       alignItems="flex-end"
       justifyContent={justifyContent}
     >
-      <Text zIndex="2" fontSize="15px" mb={mb} ml={ml}>
-        Designed and developed with <HeartIcon color="#FACDD0" mb="3px" /> by
-        Chris Erxleben
+      <Text
+        display="flex"
+        zIndex="2"
+        fontSize="15px"
+        mb={mb}
+        ml={ml}
+      >
+        Designed and developed with&nbsp;
+        <HeartIcon
+          color="#FACDD0"
+          mt="3px"
+        />
+        &nbsp;by Chris Erxnieves
       </Text>
     </Flex>
   )

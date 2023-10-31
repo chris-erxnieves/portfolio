@@ -1,19 +1,19 @@
-# Chris Erxleben's portfolio
+# Chris Erxnieves' portfolio
 
-The source code for [my portfolio](https://chriserxleben.com), built using [Gatsby](https://www.gatsbyjs.org/).
+The source code for [my portfolio](https://chriserxnieves.com), built using [Gatsby](https://www.gatsbyjs.org/).
 
 ## Installation
 
 1.  **Install the dependencies.**
 
     ```sh
-    npm install
+    yarn install
     ```
 
 2.  **Run the dev server.**
 
     ```sh
-    npm run develop
+    yarn run develop
     ```
 
 Now open `http://localhost:8000` to view the site. All changes to the project will be hot-reloaded.
@@ -22,20 +22,20 @@ Now open `http://localhost:8000` to view the site. All changes to the project wi
 
 ```sh
 # Run tests
-npm run test
+yarn run test
 ```
 
 ```sh
 # Run tests in watch mode
-npm run test:watch
+yarn run test:watch
 ```
 
 ```sh
 # Build the source code
-npm run build
+yarn run build
 ```
 
 ```sh
 # Format the source code with Prettier
-npm run format
+yarn run format
 ```

@@ -1,18 +1,16 @@
-import * as React from 'react'
-import {
-  About,
-  Work,
-  Showcase,
-  Contact,
-  SEO,
-  Side,
-  BackgroundBlobs,
-  Footer, ThemeProvider,
-} from '../components';
+import React, { FC } from 'react'
 import { Box, Flex, SystemProps, useBreakpointValue } from '@chakra-ui/react'
-import { FunctionComponent } from 'react'
+import { ThemeProvider } from '../components/shared/ThemeProvider'
+import { SEO } from '../components/shared/SEO'
+import { Side } from '../components/shared/Side'
+import { About } from '../components/About'
+import { Work } from '../components/work/Work'
+import { Showcase } from '../components/showcase/Showcase'
+import { Contact } from '../components/Contact'
+import { BackgroundBlobs } from '../components/shared/BackgroundBlobs'
+import { Footer } from '../components/shared/Footer'
 
-const IndexPage: FunctionComponent = () => {
+const IndexPage: FC = () => {
   const direction: SystemProps['flexDirection'] = useBreakpointValue({
     base: 'column',
     xl: 'row',
@@ -33,7 +31,11 @@ const IndexPage: FunctionComponent = () => {
   return (
     <ThemeProvider>
       <SEO />
-      <Flex direction={direction} justify="center" bg="darkGreen.500">
+      <Flex
+        direction={direction}
+        justify="center"
+        bg="darkGreen.500"
+      >
         <Side />
         <Box
           borderRadius="10px"

@@ -1,6 +1,5 @@
-import * as React from 'react'
+import React, { ReactNode, FC } from 'react'
 import { ChakraProvider, extendTheme } from '@chakra-ui/react'
-import { FunctionComponent } from 'react'
 import '@fontsource/raleway/400.css'
 import '@fontsource/open-sans/500.css'
 import '@fontsource/open-sans/700.css'
@@ -86,6 +85,10 @@ const theme = extendTheme({
   },
 })
 
-export const ThemeProvider: FunctionComponent = ({ children }) => (
+interface ThemeProviderProps {
+  children: ReactNode
+}
+
+export const ThemeProvider: FC<ThemeProviderProps> = ({ children }) => (
   <ChakraProvider theme={theme}>{children}</ChakraProvider>
 )

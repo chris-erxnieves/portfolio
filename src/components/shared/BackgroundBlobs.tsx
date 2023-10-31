@@ -1,8 +1,7 @@
-import * as React from 'react'
-import { FunctionComponent } from 'react'
+import React, { FC } from 'react'
 import { motion } from 'framer-motion'
 
-const YellowBlob: FunctionComponent = () => (
+const YellowBlob: FC = () => (
   <motion.svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="32.15 41.78 138.94 109.56"
@@ -26,7 +25,7 @@ const YellowBlob: FunctionComponent = () => (
   </motion.svg>
 )
 
-const PinkBlob: FunctionComponent = () => (
+const PinkBlob: FC = () => (
   <motion.svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="34.21 16.04 148.1 145.38"
@@ -50,7 +49,7 @@ const PinkBlob: FunctionComponent = () => (
   </motion.svg>
 )
 
-export const BackgroundBlobs: FunctionComponent = () => (
+export const BackgroundBlobs: FC = () => (
   <div
     style={{
       position: 'absolute',

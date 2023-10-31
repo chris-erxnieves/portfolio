@@ -1,7 +1,6 @@
-import * as React from 'react'
-import { FunctionComponent } from 'react'
+import React, { FC } from 'react'
 import { Box, Button, Heading, Link, Tag, Text, Wrap } from '@chakra-ui/react'
-import { BriefcaseIcon, CalendarIcon, CodeIcon } from '../shared'
+import { BriefcaseIcon, CalendarIcon, CodeIcon } from '../../shared/Icons'
 
 interface WorkItemProps {
   company: string
@@ -13,7 +12,7 @@ interface WorkItemProps {
   techUsed: Array<string>
 }
 
-export const WorkItem: FunctionComponent<WorkItemProps> = ({
+export const WorkItem: FC<WorkItemProps> = ({
   company,
   title,
   from,
@@ -22,20 +21,40 @@ export const WorkItem: FunctionComponent<WorkItemProps> = ({
   techUsed,
   url,
 }) => (
-  <Box bg="white" borderRadius="10px" p="20px">
+  <Box
+    bg="white"
+    borderRadius="10px"
+    p="20px"
+    data-testid="work-item"
+  >
     <Heading fontSize="23px">{company}</Heading>
-    <Text mt="10px">
-      <BriefcaseIcon mr="7px" mb="3px" />
+    <Text
+      mt="10px"
+      display="flex"
+    >
+      <BriefcaseIcon
+        mr="7px"
+        mt="4px"
+      />
       {title}
     </Text>
-    <Text mt="5px">
-      <CalendarIcon mr="7px" mb="3px" />
+    <Text
+      mt="5px"
+      display="flex"
+    >
+      <CalendarIcon
+        mr="7px"
+        mt="3px"
+      />
       {from} - {to}
     </Text>
     <Text mt="10px">{summary}</Text>
     <Wrap mt="15px">
       {techUsed.map((techUsedItem, index) => (
-        <Tag key={index} colorScheme="orange">
+        <Tag
+          key={index}
+          colorScheme="orange"
+        >
           {techUsedItem}
         </Tag>
       ))}

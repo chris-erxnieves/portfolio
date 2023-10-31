@@ -1,5 +1,0 @@
-export * from './about'
-export * from './contact'
-export * from './showcase'
-export * from './work'
-export * from './shared'

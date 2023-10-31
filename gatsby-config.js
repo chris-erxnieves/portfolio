@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Chris Erxleben`,
-    description: `A passionate full-stack software engineer located in the Denver area.`,
-    siteUrl: `https://www.chriserxleben.com`,
+    title: `Chris Erxnieves`,
+    description: `A passionate full-stack software engineer located in Colorado Springs.`,
+    siteUrl: `https://www.chriserxnieves.com`,
     image: `/images/headshot.png`,
   },
   plugins: [

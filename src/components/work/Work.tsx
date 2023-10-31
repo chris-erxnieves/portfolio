@@ -1,7 +1,6 @@
-import * as React from 'react'
+import React, { FC, useState } from 'react'
 import { Box, Button, Center, Heading, VStack } from '@chakra-ui/react'
-import { FunctionComponent, useState } from 'react'
-import { WorkItem } from './work-item'
+import { WorkItem } from './components/WorkItem'
 
 interface WorkProps {
   darkBackground?: boolean
@@ -9,11 +8,33 @@ interface WorkProps {
 
 const workHistory = [
   {
+    company: 'Vivian Health',
+    title: 'Senior Software Engineer',
+    summary: `I'm currently part of the mobile team at Vivian Health, responsible for all things involving the company's Android and iOS app. In addition to working on the company's mobile app, I'm also the team's release engineer, lead our team ceremonies, and occasionally contribute to the company's web app and API. Our mobile app is a React Native app that uses Detox for E2E testing, and our web app is uses Next.js. On the API and database, we use Express and Postgres, using Sequelize as our ORM. In addition to Postgres, we also use Algolia to power our search functionality.`,
+    from: 'December 2021',
+    to: 'Present',
+    techUsed: [
+      'React Native',
+      'Next.js',
+      'React',
+      'Typescript',
+      'Redux',
+      'Detox',
+      'Jest',
+      'Express',
+      'Sequelize',
+      'Postgres',
+      'Algolia',
+      'Git',
+    ],
+    url: 'https://www.vivian.com/',
+  },
+  {
     company: 'Charter Communications',
     title: 'Senior Software Engineer',
-    summary: `I’m currently working on Charters’ internal testing application, Photon. All teams at Charter are using Photon for their regression testing with E2E automated and manual tests. Photon also provides our users with comprehensive reporting. Currently, we’re utilizing React, Nexus, Typescript, AWS, Mongo, and GraphQL.`,
+    summary: `While at Charter, I worked on the company's internal testing application, Photon. All teams at Charter use Photon for their regression testing with E2E automated and manual tests. Photon also provides our users with comprehensive reporting. We utilized React, Nexus, Typescript, AWS, Mongo, and GraphQL.`,
     from: 'February 2021',
-    to: 'Present',
+    to: 'December 2021',
     techUsed: [
       'AWS',
       'React',
@@ -123,12 +144,12 @@ const workHistory = [
   },
 ]
 
-export const Work: FunctionComponent<WorkProps> = ({ darkBackground }) => {
+export const Work: FC<WorkProps> = ({ darkBackground }) => {
   const [visibleWorkHistory, setVisibleWorkHistory] = useState(
-    workHistory.slice(0, 3)
+    workHistory.slice(0, 3),
   )
   const [showingAll, setShowingAll] = useState(
-    visibleWorkHistory.length === workHistory.length
+    visibleWorkHistory.length === workHistory.length,
   )
 
   const handleShowAll = () => {
@@ -137,13 +158,22 @@ export const Work: FunctionComponent<WorkProps> = ({ darkBackground }) => {
   }
 
   return (
-    <Box bg={darkBackground && 'gray.100'} p="30px">
-      <Heading size="lg" mb="20px">
+    <Box
+      bg={darkBackground ? 'gray.100' : undefined}
+      p="30px"
+    >
+      <Heading
+        size="lg"
+        mb="20px"
+      >
         Work
       </Heading>
       <VStack spacing="20px">
         {visibleWorkHistory.map((workHistoryItem, index) => (
-          <WorkItem key={index} {...workHistoryItem} />
+          <WorkItem
+            key={index}
+            {...workHistoryItem}
+          />
         ))}
       </VStack>
       {!showingAll && (
@@ -153,6 +183,7 @@ export const Work: FunctionComponent<WorkProps> = ({ darkBackground }) => {
             onClick={handleShowAll}
             mt="15px"
             variant="outline"
+            data-testid="show-all-button"
           >
             Show all
           </Button>

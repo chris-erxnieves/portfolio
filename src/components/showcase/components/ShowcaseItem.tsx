@@ -1,5 +1,4 @@
-import * as React from 'react'
-import { FunctionComponent } from 'react'
+import React, { FC } from 'react'
 import {
   Box,
   Button,
@@ -14,7 +13,7 @@ import {
   useBreakpointValue,
   Wrap,
 } from '@chakra-ui/react'
-import { CalendarIcon, CodeIcon } from '../shared'
+import { CalendarIcon, CodeIcon } from '../../shared/Icons'
 
 interface ShowcaseItemProps {
   title: string
@@ -29,9 +28,7 @@ interface ShowcaseImageProps {
   imageNameAndExtension: string
 }
 
-const ShowcaseImage: FunctionComponent<ShowcaseImageProps> = ({
-  imageNameAndExtension,
-}) => {
+const ShowcaseImage: FC<ShowcaseImageProps> = ({ imageNameAndExtension }) => {
   const maxHeight: SystemProps['maxHeight'] = useBreakpointValue({
     base: '300px',
     xl: 'auto',
@@ -52,7 +49,7 @@ const ShowcaseImage: FunctionComponent<ShowcaseImageProps> = ({
   )
 }
 
-export const ShowcaseItem: FunctionComponent<ShowcaseItemProps> = ({
+export const ShowcaseItem: FC<ShowcaseItemProps> = ({
   title,
   year,
   summary,
@@ -60,17 +57,27 @@ export const ShowcaseItem: FunctionComponent<ShowcaseItemProps> = ({
   sourceCodeUrl,
   imageNameAndExtension,
 }) => {
-  const variant: 'within' | 'side' = useBreakpointValue({
+  const variant = useBreakpointValue({
     base: 'within',
     xl: 'side',
   })
 
   return (
-    <HStack bg="gray.100" borderRadius="10px" p="20px">
+    <HStack
+      bg="gray.100"
+      borderRadius="10px"
+      p="20px"
+    >
       <Box>
         <Heading fontSize="23px">{title}</Heading>
-        <Text mt="10px">
-          <CalendarIcon mr="7px" mb="3px" />
+        <Text
+          display="flex"
+          mt="10px"
+        >
+          <CalendarIcon
+            mr="7px"
+            mt="4px"
+          />
           {year}
         </Text>
         {imageNameAndExtension && variant === 'within' && (
@@ -81,7 +88,10 @@ export const ShowcaseItem: FunctionComponent<ShowcaseItemProps> = ({
         <Text mt="10px">{summary}</Text>
         <Wrap mt="15px">
           {techUsed.map((techUsedItem, index) => (
-            <Tag key={index} colorScheme="orange">
+            <Tag
+              key={index}
+              colorScheme="orange"
+            >
               {techUsedItem}
             </Tag>
           ))}

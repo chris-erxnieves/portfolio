@@ -1,6 +1,0 @@
-export * from './seo'
-export * from './side'
-export * from './icons'
-export * from './theme-provider'
-export * from './background-blobs'
-export * from './footer'

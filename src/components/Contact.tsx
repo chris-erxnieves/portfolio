@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React, { FC } from 'react'
 import {
   Box,
   Button,
@@ -12,10 +12,11 @@ import {
   Textarea,
   useToast,
 } from '@chakra-ui/react'
-import { FunctionComponent } from 'react'
-import { Formik, Form, Field } from 'formik'
+import { Formik, Form, Field, FieldProps } from 'formik'
 import { send } from 'emailjs-com'
-import { MailIcon, PersonIcon } from '../shared'
+import { MailIcon, PersonIcon } from './shared/Icons'
+
+const INITIAL_VALUES = { name: '', email: '', message: '' }
 
 interface ContactProps {
   darkBackground?: boolean
@@ -26,9 +27,7 @@ enum IconColor {
   Invalid = '#E53E3E',
 }
 
-export const Contact: FunctionComponent<ContactProps> = ({
-  darkBackground,
-}) => {
+export const Contact: FC<ContactProps> = ({ darkBackground }) => {
   const toast = useToast()
 
   const validateField = (field: string, value: string) => {
@@ -55,46 +54,64 @@ export const Contact: FunctionComponent<ContactProps> = ({
     })
   }
 
-  const handleSubmit = async ({ name, email, message }, actions) => {
+  const handleSubmit = async (
+    {
+      name,
+      email,
+      message,
+    }: {
+      name: string
+      email: string
+      message: string
+    },
+    actions: any,
+  ) => {
     try {
       name = name.trim()
       email = email.trim()
       message = message.trim()
       await send(
-        process.env.GATSBY_EMAILJS_SERVICE_ID,
-        process.env.GATSBY_EMAILJS_TEMPLATE_ID,
+        process.env.GATSBY_EMAILJS_SERVICE_ID as string,
+        process.env.GATSBY_EMAILJS_TEMPLATE_ID as string,
         { name, email, message },
-        process.env.GATSBY_EMAILJS_USER_ID
+        process.env.GATSBY_EMAILJS_USER_ID,
       )
       actions.resetForm()
       triggerToast('Message sent!', 'success')
     } catch (error) {
       triggerToast(
         'An error was encountered while sending your message.',
-        'error'
+        'error',
       )
     }
   }
 
   return (
-    <Box bg={darkBackground && 'gray.100'} p="30px" borderBottomRadius={10}>
-      <Heading size="lg" mb="20px">
+    <Box
+      bg={darkBackground ? 'gray.100' : undefined}
+      p="30px"
+      borderBottomRadius={10}
+    >
+      <Heading
+        size="lg"
+        mb="20px"
+      >
         Say hello
       </Heading>
 
       <Formik
-        initialValues={{ name: '', email: '', message: '' }}
+        initialValues={INITIAL_VALUES}
         onSubmit={handleSubmit}
       >
         {(props) => (
           <Form>
             <Field
               name="name"
-              validate={(value) => validateField('Name', value)}
+              validate={(value: string) => validateField('Name', value)}
             >
-              {({ field, form }) => (
+              {({ field, form }: FieldProps) => (
                 <FormControl
-                  isInvalid={form.errors.name && form.touched.name}
+                  isInvalid={!!(form.errors.name && form.touched.name)}
                   isRequired
                   maxWidth="750px"
                 >
@@ -112,24 +129,29 @@ export const Contact: FunctionComponent<ContactProps> = ({
                         />
                       }
                     />
-                    <Input {...field} id="name" bg="white" />
+                    <Input
+                      {...field}
+                      id="name"
+                      bg="white"
+                      data-testid="name-input"
+                    />
                   </InputGroup>
-                  <FormErrorMessage>{form.errors.name}</FormErrorMessage>
+                  <FormErrorMessage>{`${form.errors.name}`}</FormErrorMessage>
                 </FormControl>
               )}
             </Field>
             <Field
               name="email"
-              validate={(value) => validateField('Email', value)}
+              validate={(value: string) => validateField('Email', value)}
             >
-              {({ field, form }) => (
+              {({ field, form }: FieldProps) => (
                 <FormControl
-                  isInvalid={form.errors.email && form.touched.email}
+                  isInvalid={!!(form.errors.email && form.touched.email)}
                   isRequired
                   mt="25px"
                   maxWidth="750px"
                 >
-                  <FormLabel htmlFor="name">Email</FormLabel>
+                  <FormLabel htmlFor="email">Email</FormLabel>
                   <InputGroup>
                     <InputLeftElement
                       pointerEvents="none"
@@ -143,31 +165,42 @@ export const Contact: FunctionComponent<ContactProps> = ({
                         />
                       }
                     />
-                    <Input {...field} id="email" bg="white" />
+                    <Input
+                      {...field}
+                      id="email"
+                      bg="white"
+                      data-testid="email-input"
+                    />
                   </InputGroup>
-                  <FormErrorMessage>{form.errors.email}</FormErrorMessage>
+                  <FormErrorMessage>{`${form.errors.email}`}</FormErrorMessage>
                 </FormControl>
               )}
             </Field>
             <Field
               name="message"
-              validate={(value) => validateField('Message', value)}
+              validate={(value: string) => validateField('Message', value)}
             >
-              {({ field, form }) => (
+              {({ field, form }: FieldProps) => (
                 <FormControl
-                  isInvalid={form.errors.message && form.touched.message}
+                  isInvalid={!!(form.errors.message && form.touched.message)}
                   isRequired
                   mt="25px"
                   maxWidth="750px"
                 >
                   <FormLabel htmlFor="message">Message</FormLabel>
-                  <Textarea {...field} id="message" resize="none" bg="white" />
-                  <FormErrorMessage>{form.errors.message}</FormErrorMessage>
+                  <Textarea
+                    {...field}
+                    id="message"
+                    resize="none"
+                    bg="white"
+                    data-testid="message-input"
+                  />
+                  <FormErrorMessage>{`${form.errors.message}`}</FormErrorMessage>
                 </FormControl>
               )}
             </Field>
             <Button
-              mt={4}
+              mt="20px"
               colorScheme="lightPink"
               isLoading={props.isSubmitting}
               isDisabled={!props.dirty || !props.isValid}
