@@ -11,17 +11,9 @@ import { BackgroundBlobs } from '../components/shared/BackgroundBlobs'
 import { Footer } from '../components/shared/Footer'
 
 const IndexPage: FC = () => {
-  const mt: SystemProps['mt'] = useBreakpointValue({
-    base: '20px',
-    xl: '110px',
-  })
   const heightOffset: SystemProps['mt'] = useBreakpointValue({
     base: 497,
     xl: 135,
-  })
-  const mb: SystemProps['mb'] = useBreakpointValue({
-    base: '70px',
-    xl: '25px',
   })
 
   return (
@@ -39,8 +31,14 @@ const IndexPage: FC = () => {
         <Box
           borderRadius="10px"
           bg="white"
-          mt={mt}
-          mb={mb}
+          mt={{
+            base: '20px',
+            xl: '110px',
+          }}
+          mb={{
+            base: '70px',
+            xl: '25px',
+          }}
           mx="20px"
           maxW="1200px"
           h={{ base: 'auto', xl: `calc(100vh - ${heightOffset}px)` }}

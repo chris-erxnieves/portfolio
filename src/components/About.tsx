@@ -8,28 +8,23 @@ import {
   useBreakpointValue,
   Center,
   Image,
-  SystemProps,
 } from '@chakra-ui/react'
 
 interface AboutProps {
   darkBackground?: boolean
 }
 
-const AboutImage: FC = () => {
-  const maxHeight: SystemProps['height'] = useBreakpointValue({
-    base: 450,
-    xl: 350,
-  })
-
-  return (
-    <Image
-      src={`/running.webp`}
-      alt="Running at Great Sand Dunes National Park"
-      maxHeight={maxHeight}
-      borderRadius="5px"
-    />
-  )
-}
+const AboutImage: FC = () => (
+  <Image
+    src={`/running.webp`}
+    alt="Running at Great Sand Dunes National Park"
+    maxHeight={{
+      base: 450,
+      xl: 350,
+    }}
+    borderRadius="5px"
+  />
+)
 
 export const About: FC<AboutProps> = ({ darkBackground }) => {
   const variant = useBreakpointValue({

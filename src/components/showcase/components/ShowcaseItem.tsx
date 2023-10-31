@@ -7,7 +7,6 @@ import {
   HStack,
   Image,
   Link,
-  SystemProps,
   Tag,
   Text,
   useBreakpointValue,
@@ -28,26 +27,21 @@ interface ShowcaseImageProps {
   imageNameAndExtension: string
 }
 
-const ShowcaseImage: FC<ShowcaseImageProps> = ({ imageNameAndExtension }) => {
-  const maxHeight: SystemProps['maxHeight'] = useBreakpointValue({
-    base: '300px',
-    xl: 'auto',
-  })
-  const maxWidth: SystemProps['maxWidth'] = useBreakpointValue({
-    base: 'auto',
-    xl: '450px',
-  })
-
-  return (
-    <Image
-      src={`/${imageNameAndExtension}`}
-      alt="Showcase image"
-      maxHeight={maxHeight}
-      maxWidth={maxWidth}
-      borderRadius="5px"
-    />
-  )
-}
+const ShowcaseImage: FC<ShowcaseImageProps> = ({ imageNameAndExtension }) => (
+  <Image
+    src={`/${imageNameAndExtension}`}
+    alt="Showcase image"
+    maxHeight={{
+      base: '300px',
+      xl: 'auto',
+    }}
+    maxWidth={{
+      base: 'auto',
+      xl: '450px',
+    }}
+    borderRadius="5px"
+  />
+)
 
 export const ShowcaseItem: FC<ShowcaseItemProps> = ({
   title,
