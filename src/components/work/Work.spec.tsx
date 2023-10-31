@@ -1,7 +1,6 @@
 import React from 'react'
 import { Work } from './Work'
-import { render, screen } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
+import { fireEvent, render, screen } from '@testing-library/react'
 
 describe('Work', () => {
   it('should show the first three work items before the user clicks the show all button', () => {
@@ -13,7 +12,7 @@ describe('Work', () => {
   it('should show all work items after the user clicks the show all button', async () => {
     render(<Work />)
 
-    await userEvent.click(screen.getByTestId('show-all-button'))
+    fireEvent.click(screen.getByTestId('show-all-button'))
 
     expect(screen.queryAllByTestId('work-item').length).toBeGreaterThan(3)
   })
