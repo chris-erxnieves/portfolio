@@ -5,12 +5,12 @@ import {
   Center,
   Heading,
   HStack,
-  Image,
   Link,
   Tag,
   Text,
   useBreakpointValue,
   Wrap,
+  Image,
 } from '@chakra-ui/react'
 import { CalendarIcon, CodeIcon } from '../../shared/Icons'
 
@@ -39,7 +39,7 @@ const ShowcaseImage: FC<ShowcaseImageProps> = ({ imageNameAndExtension }) => (
       base: 'auto',
       xl: '450px',
     }}
-    borderRadius="5px"
+    borderRadius={5}
   />
 )
 
@@ -59,7 +59,7 @@ export const ShowcaseItem: FC<ShowcaseItemProps> = ({
   return (
     <HStack
       bg="gray.100"
-      borderRadius="10px"
+      borderRadius={10}
       p="20px"
     >
       <Box>

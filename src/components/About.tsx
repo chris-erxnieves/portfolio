@@ -22,7 +22,7 @@ const AboutImage: FC = () => (
       base: 450,
       xl: 350,
     }}
-    borderRadius="5px"
+    borderRadius={5}
   />
 )
 

@@ -23,7 +23,7 @@ export const WorkItem: FC<WorkItemProps> = ({
 }) => (
   <Box
     bg="white"
-    borderRadius="10px"
+    borderRadius={10}
     p="20px"
     data-testid="work-item"
   >

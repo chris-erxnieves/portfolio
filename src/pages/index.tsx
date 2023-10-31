@@ -29,7 +29,7 @@ const IndexPage: FC = () => {
       >
         <Side />
         <Box
-          borderRadius="10px"
+          borderRadius={10}
           bg="white"
           mt={{
             base: '20px',

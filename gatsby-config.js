@@ -8,8 +8,6 @@ module.exports = {
   plugins: [
     `@chakra-ui/gatsby-plugin`,
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-sharp`,
-    `gatsby-transformer-sharp`,
     `gatsby-disable-404`,
     {
       resolve: `gatsby-plugin-typescript`,

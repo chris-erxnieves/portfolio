@@ -74,7 +74,7 @@ export const Side: FC = () => {
         w={{ base: 'calc(100vw - 40px)', xl: '275px' }}
         h="max-content"
         bg="white"
-        borderRadius="10px"
+        borderRadius={10}
         zIndex="2"
         boxShadow="md"
       >
