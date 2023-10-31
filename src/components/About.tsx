@@ -16,10 +16,13 @@ interface AboutProps {
 }
 
 const AboutImage: FC = () => {
-  const maxHeight: SystemProps['height'] = useBreakpointValue({
-    base: 450,
-    xl: 350,
-  })
+  const maxHeight: SystemProps['height'] = useBreakpointValue(
+    {
+      base: 450,
+      xl: 350,
+    },
+    { ssr: false },
+  )
 
   return (
     <Image
@@ -32,10 +35,13 @@ const AboutImage: FC = () => {
 }
 
 export const About: FC<AboutProps> = ({ darkBackground }) => {
-  const variant = useBreakpointValue({
-    base: 'within',
-    lg: 'side',
-  })
+  const variant = useBreakpointValue(
+    {
+      base: 'within',
+      lg: 'side',
+    },
+    { ssr: false },
+  )
 
   return (
     <Box

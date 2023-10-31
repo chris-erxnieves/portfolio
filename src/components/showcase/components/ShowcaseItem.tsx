@@ -29,14 +29,20 @@ interface ShowcaseImageProps {
 }
 
 const ShowcaseImage: FC<ShowcaseImageProps> = ({ imageNameAndExtension }) => {
-  const maxHeight: SystemProps['maxHeight'] = useBreakpointValue({
-    base: '300px',
-    xl: 'auto',
-  })
-  const maxWidth: SystemProps['maxWidth'] = useBreakpointValue({
-    base: 'auto',
-    xl: '450px',
-  })
+  const maxHeight: SystemProps['maxHeight'] = useBreakpointValue(
+    {
+      base: '300px',
+      xl: 'auto',
+    },
+    { ssr: false },
+  )
+  const maxWidth: SystemProps['maxWidth'] = useBreakpointValue(
+    {
+      base: 'auto',
+      xl: '450px',
+    },
+    { ssr: false },
+  )
 
   return (
     <Image
@@ -57,10 +63,13 @@ export const ShowcaseItem: FC<ShowcaseItemProps> = ({
   sourceCodeUrl,
   imageNameAndExtension,
 }) => {
-  const variant = useBreakpointValue({
-    base: 'within',
-    xl: 'side',
-  })
+  const variant = useBreakpointValue(
+    {
+      base: 'within',
+      xl: 'side',
+    },
+    { ssr: false },
+  )
 
   return (
     <HStack
