@@ -11,40 +11,27 @@ import { BackgroundBlobs } from '../components/shared/BackgroundBlobs'
 import { Footer } from '../components/shared/Footer'
 
 const IndexPage: FC = () => {
-  const direction: SystemProps['flexDirection'] = useBreakpointValue(
-    {
-      base: 'column',
-      xl: 'row',
-    },
-    { ssr: false },
-  )
-  const mt: SystemProps['mt'] = useBreakpointValue(
-    {
-      base: '20px',
-      xl: '110px',
-    },
-    { ssr: false },
-  )
-  const heightOffset: SystemProps['mt'] = useBreakpointValue(
-    {
-      base: 497,
-      xl: 135,
-    },
-    { ssr: false },
-  )
-  const mb: SystemProps['mb'] = useBreakpointValue(
-    {
-      base: '70px',
-      xl: '25px',
-    },
-    { ssr: false },
-  )
+  const mt: SystemProps['mt'] = useBreakpointValue({
+    base: '20px',
+    xl: '110px',
+  })
+  const heightOffset: SystemProps['mt'] = useBreakpointValue({
+    base: 497,
+    xl: 135,
+  })
+  const mb: SystemProps['mb'] = useBreakpointValue({
+    base: '70px',
+    xl: '25px',
+  })
 
   return (
     <ThemeProvider>
       <SEO />
       <Flex
-        direction={direction}
+        direction={{
+          base: 'column',
+          xl: 'row',
+        }}
         justify="center"
         bg="darkGreen.500"
       >

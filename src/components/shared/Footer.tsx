@@ -3,27 +3,18 @@ import { HeartIcon } from './Icons'
 import React, { FC } from 'react'
 
 export const Footer: FC = () => {
-  const justifyContent: SystemProps['justifyContent'] = useBreakpointValue(
-    {
-      base: 'center',
-      xl: 'flex-start',
-    },
-    { ssr: false },
-  )
-  const mb: SystemProps['mb'] = useBreakpointValue(
-    {
-      base: '23px',
-      xl: '3px',
-    },
-    { ssr: false },
-  )
-  const ml: SystemProps['ml'] = useBreakpointValue(
-    {
-      base: '0',
-      xl: '10px',
-    },
-    { ssr: false },
-  )
+  const justifyContent: SystemProps['justifyContent'] = useBreakpointValue({
+    base: 'center',
+    xl: 'flex-start',
+  })
+  const mb: SystemProps['mb'] = useBreakpointValue({
+    base: '23px',
+    xl: '3px',
+  })
+  const ml: SystemProps['ml'] = useBreakpointValue({
+    base: '0',
+    xl: '10px',
+  })
 
   return (
     <Flex
