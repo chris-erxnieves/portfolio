@@ -13,7 +13,7 @@ import {
   useToast,
 } from '@chakra-ui/react'
 import { Formik, Form, Field, FieldProps } from 'formik'
-import { send } from 'emailjs-com'
+import { send } from '@emailjs/browser'
 import { MailIcon, PersonIcon } from './shared/Icons'
 
 const INITIAL_VALUES = { name: '', email: '', message: '' }
