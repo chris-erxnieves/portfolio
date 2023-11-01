@@ -11,10 +11,13 @@ import { BackgroundBlobs } from '../components/shared/BackgroundBlobs'
 import { Footer } from '../components/shared/Footer'
 
 const IndexPage: FC = () => {
-  const heightOffset: SystemProps['mt'] = useBreakpointValue({
-    base: 497,
-    xl: 135,
-  })
+  const heightOffset: SystemProps['mt'] = useBreakpointValue(
+    {
+      base: 497,
+      xl: 135,
+    },
+    { fallback: 'xl' },
+  )
 
   return (
     <ThemeProvider>

@@ -32,7 +32,7 @@ export const About: FC<AboutProps> = ({ darkBackground }) => {
       base: 'within',
       lg: 'side',
     },
-    { fallback: 'side' },
+    { fallback: 'lg' },
   )
 
   return (

@@ -51,10 +51,13 @@ export const ShowcaseItem: FC<ShowcaseItemProps> = ({
   sourceCodeUrl,
   imageNameAndExtension,
 }) => {
-  const variant = useBreakpointValue({
-    base: 'within',
-    xl: 'side',
-  })
+  const variant = useBreakpointValue(
+    {
+      base: 'within',
+      xl: 'side',
+    },
+    { fallback: 'xl' },
+  )
 
   return (
     <HStack
