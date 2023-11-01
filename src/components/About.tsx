@@ -27,10 +27,13 @@ const AboutImage: FC = () => (
 )
 
 export const About: FC<AboutProps> = ({ darkBackground }) => {
-  const variant = useBreakpointValue({
-    base: 'within',
-    lg: 'side',
-  })
+  const variant = useBreakpointValue(
+    {
+      base: 'within',
+      lg: 'side',
+    },
+    { fallback: 'side' },
+  )
 
   return (
     <Box
