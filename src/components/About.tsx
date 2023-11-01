@@ -16,7 +16,7 @@ interface AboutProps {
 
 const AboutImage: FC = () => (
   <Image
-    src={`/running.webp`}
+    src="/running.webp"
     alt="Running at Great Sand Dunes National Park"
     maxHeight={{
       base: 450,

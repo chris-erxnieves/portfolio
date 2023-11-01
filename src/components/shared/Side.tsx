@@ -60,7 +60,7 @@ export const Side: FC = () => {
         height="0"
       >
         <Image
-          src={`/profile.jpg`}
+          src="/profile.webp"
           alt="Profile picture"
           boxSize="150px"
           objectFit="cover"
