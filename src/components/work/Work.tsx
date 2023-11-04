@@ -140,7 +140,7 @@ const workHistory = [
       'Jasmine',
       'Karma',
     ],
-    url: 'https://www.maritzcx.com/gb/lp/culture-next/',
+    url: 'https://maritzmotivation.com/culturenext/',
   },
 ]
 
