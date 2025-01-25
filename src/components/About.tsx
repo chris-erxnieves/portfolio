@@ -52,17 +52,13 @@ export const About: FC<AboutProps> = ({ darkBackground }) => {
           >
             About me
           </Heading>
-          <Text mt="8px">Hey there—my name is Chris.</Text>
-          <Text mt="20px">
-            I'm a passionate full-stack software engineer with an emphasis
-            currently on front-end development.
-          </Text>
+          <Text mt="8px">Hey there—my name is Chris and I'm a full-stack software engineer.</Text>
           <Text mt="20px">
             I'm originally from Missouri, but decided to come out to Colorado to
             be closer to nature. In my free-time, I enjoy going on hikes and
             runs, biking, drinking coffee, video gaming, and spending time with
             my wife, Karla, our cat (Zora), and dog (Dora). We went to the sand
-            dunes this past fall, so I tried to run it (extremely difficult)!
+            dunes this recently, so I tried to run it (extremely difficult)!
           </Text>
           <Text mt="20px">
             I'm always on the lookout to collaborate with others that get as
